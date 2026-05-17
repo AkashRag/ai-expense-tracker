@@ -51,3 +51,73 @@ the expense.
 - AI-powered data extraction
 - Proper HTTP status codes
 - Error handling
+  ## API Endpoints
+
+### POST /expense — Create Expense
+**Request:**
+```json
+{
+  "message": "Spent 300 on pizza"
+}
+```
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Expense is saved!"
+}
+```
+
+---
+
+### GET /expense — Read All Expenses
+**Request:** No body needed
+
+**Response:**
+```json
+[
+  {"id": 1, "Item": "Pizza", "Amount": 300, "Category": "Food"},
+  {"id": 2, "Item": "Petrol", "Amount": 1200, "Category": "Transport"}
+]
+```
+
+---
+
+### PATCH /expense/:id — Update Expense
+**Request:**
+```json
+{
+  "amount": 999
+}
+```
+**Response:**
+```json
+{
+  "message": "The given id amount is updated"
+}
+```
+
+---
+
+### DELETE /expense/:id — Delete Expense
+**Request:** No body needed
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Successfully deleted"
+}
+```
+
+---
+
+## Error Responses
+
+| Status Code | Meaning |
+|-------------|---------|
+| 200 | Success |
+| 400 | Bad Request — missing or invalid data |
+| 403 | Forbidden — wrong API key |
+| 404 | Not Found — expense not found |
+| 500 | Server Error |
